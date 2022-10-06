@@ -9,12 +9,7 @@ resource "aws_instance" "web" {
     
 
   }
- connection {
-    type        = "ssh"
-    user        = "ec2-user"
-    private_key = file("tfprivtky.pem")
-    host        = self.public_ip
-  }
+
 
 provisioner "remote-exec" {
     inline = [
@@ -23,5 +18,11 @@ provisioner "remote-exec" {
       "sudo systemctl enable httpd",
       "echo '<h1>Terraform Instance Launched Successfully</h1>' | sudo tee /var/www/html/index.html"
     ]
+    connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = file("tfprivtky.pem")
+    host        = self.public_ip
+  }
   }
 }
