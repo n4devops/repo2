@@ -12,7 +12,7 @@ resource "aws_instance" "web" {
  connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("prvtkey.pem")
+    private_key = file("tfprivtky.pem")
     host        = self.public_ip
   }
 
