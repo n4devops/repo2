@@ -32,7 +32,9 @@ resource "aws_instance" "web" {
     host        = self.public_ip
   }
   }*/
-  resource "aws_security_group" "demo-sg" {
+ 
+}
+ resource "aws_security_group" "demo-sg" {
   name = "sec-grp"
   description = "Allow HTTP  traffic via Terraform"
 
@@ -43,5 +45,4 @@ resource "aws_instance" "web" {
     cidr_blocks = ["0.0.0.0/0"]
   }
  
-}
 }
