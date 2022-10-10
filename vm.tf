@@ -2,7 +2,7 @@ resource "aws_instance" "web" {
   
  
   ami           = "ami-026b57f3c383c2eec"
-  instance_type = "t2.micro
+  instance_type = "t2.micro"
    user_data = <<-EOF
             #!/bin/bash
             sudo yum update -y
@@ -44,5 +44,10 @@ resource "aws_instance" "web" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
- 
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
